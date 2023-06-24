@@ -47,7 +47,11 @@ const handleSettingsToggle = (event) => {
 html.settings.button.addEventListener("click", handleSettingsToggle);
 html.settings.cancel.addEventListener("click", handleSettingsToggle);
 
-//get the Day/Night option value and setting the CSS styling to dark/light respectivly
+/**
+ * Handles the saving of settings and updates the CSS styling 
+ * based on the Day/Night option value.
+ * @param {Event} event - The event object.
+ */
 const handleSettingsSave = (event) => {
     event.preventDefault();
     if ((html.settings.theme.value = "night")) {
@@ -184,8 +188,8 @@ const showSearchResults = (object) => {
     } else if (object.length === 0){
          area.innerHTML= "no books match your description"
      }else {
-
-        html.list.message.classList = 'list__mesage'
+    
+        
         area.innerHTML = "";
         const extracted = object.slice(index, index + BOOKS_PER_PAGE);
 
@@ -214,7 +218,7 @@ const showSearchResults = (object) => {
     //set books left for "show more" button
     html.list.button.innerHTML = `Show More (${booksLeft})`;
     html.search.dialog.removeAttribute("open");
-}};
+}}; 
 
 
 
@@ -229,7 +233,7 @@ const closePreview = (event) => {
     event.preventDefault;
     html.list.active.removeAttribute("open");
 };
-//Preview gets the id and opens the popup with the correct book data added to the html
+
 const preview = (id) => {
     const book = books.find((book) => book.id === id);
     const blurImage = html.list.blur;
