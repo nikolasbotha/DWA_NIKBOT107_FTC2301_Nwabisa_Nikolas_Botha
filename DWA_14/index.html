@@ -4,53 +4,55 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tally Count</title>
+        <title>DWA_14</title>
         <link rel="stylesheet" href="./styles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.5.2/cdn/themes/dark.css" />
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.5.2/cdn/shoelace-autoloader.js"></script>
-        <script src="./redux.js" defer ></script>
-
+        <script src="https://unpkg.com/vue@2.6.14"></script>
+        <!-- <script src="./redux.js" defer></script> -->
     </head>
     <body>
-        <header class="header">
-            <h1 class="header__title">
-                Tally Count
-            </h1>
-        </header>
-        <main class="counter">
-            <h1 class="counter__value" data-key="number" ></h1>
-            <!-- <input class="counter__value" data-key="number" /> -->
-            <div class="counter__actions">
-                <sl-button  size="large"data-key="subtract" class="counter__button counter__button_first">-</sl-button>
-                <sl-button size="large" data-key="add" class="counter__button">+</sl-button>
-            </div>
-        </main>
+        <div id="app">
+            <header class="header">
+                <h1 class="header__title">
+                    Tally Count
+                </h1>
+                <h2>DWA_14</h2>
+            </header>
+            <main class="counter">
+                <h1 class="counter__value" v-text="count"></h1>
+                <div class="counter__actions">
+                    <sl-button size="large" @click="subtract" class="counter__button counter__button_first">-</sl-button>
+                    <sl-button size="large" @click="add" class="counter__button">+</sl-button>
+                </div>
+                <sl-button size="large" @click="reset" class="reset__button">Reset Counter</sl-button>
+            </main>
+            <footer class="footer">
+                Inspired by <a class="footer__link" href="https://tallycount.app/">Tally Count</a>. Note that this is merely a student practice project for learning JavaScript.
+            </footer>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    count: 0
+                },
+                methods: {
+                    add() {
+                        this.count++;
+                    },
+                    subtract() {
+                        this.count--;
+                    },
+                    reset() {
+                        this.count = 0;
+                    }
+                }
+            });
+            
+        </script>
         
-        <!-- <sl-dropdown>
-            <sl-button slot="trigger" caret>Step Size</sl-button>
-            <sl-menu>
-              <sl-menu-item type="checkbox" checked>1</sl-menu-item>
-              <sl-menu-item type="checkbox">2</sl-menu-item>
-              <sl-menu-item type="checkbox">3</sl-menu-item>
-              <sl-menu-item type="checkbox">4</sl-menu-item>
-              <sl-menu-item type="checkbox">5</sl-menu-item>
-              <sl-menu-item type="checkbox">6</sl-menu-item>
-              <sl-menu-item type="checkbox">7</sl-menu-item>
-              <sl-menu-item type="checkbox">8</sl-menu-item>
-              <sl-menu-item type="checkbox">9</sl-menu-item>
-
-            </sl-menu>
-          </sl-dropdown> -->
-        <sl-button size="large" data-key="reset" class="reset__button">Reset Counter</sl-button>    
-
-
-        </main>
-        <footer class="footer">
-            Inspired by <a class="footer__link"href="https://tallycount.app/" >Tally Count</a> Note that this is
-             merely a student practice project for learning JavaScript
-        </footer>
     </body>
 </html>
